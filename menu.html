@@ -5,33 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu</title>
     <style>
-        
-        
+        /* Ensure the page fills the screen */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
 
-      
+        /* Set the background image on the html element */
         html {
             background-image: url('https://github.com/Bw11111/tsa2025/blob/main/image_5.png?raw=true');
             background-size: cover; /* Ensure the image covers the entire screen */
             background-position: center;
             background-repeat: no-repeat;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        
+            height: 100%;
         }
 
-        
+        /* Content inside the page */
         .content {
             color: white;
             font-size: 2em;
             text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             z-index: 1;
         }
 
-   
+        /* For smaller screens */
         @media (max-width: 768px) {
-            body {
-                background-size: contain;
+            html {
+                background-size: contain; /* Make the background image fit the screen */
                 background-attachment: fixed;
             }
         }
@@ -39,7 +44,9 @@
 </head>
 <body>
 
-
+    <div class="content">
+        <p>Your content goes here!</p>
+    </div>
 
 </body>
 </html>
