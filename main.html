@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Map Page</title>
     <style>
-        /* Make the image cover the entire page */
+        /* Make the image fill the entire page while maintaining aspect ratio */
         body, html {
             margin: 0;
             padding: 0;
@@ -15,7 +15,7 @@
         img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ensures the image covers the entire page */
+            object-fit: contain; /* Ensures the entire image fits within the page */
         }
     </style>
 </head>
