@@ -15,7 +15,7 @@
         /* Set the background image on the html element */
         html {
             background-image: url('https://github.com/Bw11111/tsa2025/blob/main/image_5.png?raw=true');
-            background-size: cover; /* Ensure the image covers the entire screen */
+            background-size: contain; /* Ensures the entire image fits within the screen */
             background-position: center;
             background-repeat: no-repeat;
             height: 100%;
@@ -36,7 +36,7 @@
         /* For smaller screens */
         @media (max-width: 768px) {
             html {
-                background-size: contain; /* Make the background image fit the screen */
+                background-size: contain; /* Ensure image is fully visible */
                 background-attachment: fixed;
             }
         }
