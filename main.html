@@ -3,26 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Map Page</title>
+    <title>Green Harmony</title>
     <style>
-        /* Remove margin/padding and set full height */
+       
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
         }
 
-        /* Ensure the image spans the full width of the page */
         img {
             width: 100%;
             height: auto;
-            display: block; /* Removes any extra space below the image */
+            display: block; 
         }
     </style>
 </head>
 <body>
 
-    <!-- Image map with clickable areas -->
+    
     <img src="https://github.com/Bw11111/tsa2025/blob/main/image_4.png?raw=true" usemap="#image-map" id="responsive-image">
 
     <map name="image-map">
@@ -31,19 +30,19 @@
     </map>
 
     <script>
-        // Function to resize the image map based on the image's actual dimensions
+        
         function resizeImageMap() {
             const image = document.getElementById('responsive-image');
             const map = document.querySelector('map[name="image-map"]');
             const areas = map.getElementsByTagName('area');
 
-            // Get the actual dimensions of the image
+            
             const width = image.naturalWidth;
             const height = image.naturalHeight;
             const displayedWidth = image.offsetWidth;
             const scale = displayedWidth / width;
 
-            // Scale the coordinates for each <area>
+    
             for (const area of areas) {
                 const originalCoords = area.getAttribute('data-original-coords').split(',').map(Number);
                 const scaledCoords = originalCoords.map(coord => Math.round(coord * scale));
@@ -51,7 +50,7 @@
             }
         }
 
-        // Set up the image map's original coordinates and resize on load and window resize
+     
         document.addEventListener('DOMContentLoaded', () => {
             const areas = document.querySelectorAll('map[name="image-map"] area');
             areas.forEach(area => {
