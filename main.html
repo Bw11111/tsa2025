@@ -3,67 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Map Page</title>
+    <title>Clickable Areas with Invisible Links</title>
     <style>
-        /* Remove margin/padding and set full height */
+        /* Reset default margins */
         body, html {
             margin: 0;
             padding: 0;
-            height: 100%;
         }
 
-        /* Ensure the image spans the full width of the page */
-        img {
+        /* Ensure the container spans the full width and height of the viewport */
+        .image-container {
+            position: relative;
+            width: 100%;
+            max-width: 100%; /* Ensure image fits within the container */
+        }
+
+        /* Style the image to span the full width */
+        .image-container img {
             width: 100%;
             height: auto;
-            display: block; /* Removes any extra space below the image */
+            display: block;
+        }
+
+        /* Position the invisible links over the image */
+        .hotspot {
+            position: absolute;
+            background: rgba(0, 0, 0, 0); /* Fully transparent background */
+            cursor: pointer; /* Indicate the clickable area */
+        }
+
+        /* Optional: Highlight clickable areas on hover for debugging */
+        .hotspot:hover {
+            background: rgba(255, 0, 0, 0.3); /* Semi-transparent red for visual feedback */
         }
     </style>
 </head>
 <body>
 
-    <!-- Image map with clickable areas -->
-    <img src="https://github.com/Bw11111/tsa2025/blob/main/image_4.png?raw=true" usemap="#image-map" id="responsive-image">
+    <div class="image-container">
+        <!-- The background image -->
+        <img src="https://github.com/Bw11111/tsa2025/blob/main/image_4.png?raw=true" alt="Background Image">
 
-    <map name="image-map">
-        <area target="" alt="menu" title="menu" href="https://bw11111.github.io/tsa2025/menu.html" coords="187,10,223,26" shape="rect">
-        <area target="" alt="about us" title="about us" href="https://bw11111.github.io/tsa2025/about_us.html" coords="243,10,291,21" shape="rect">
-    </map>
-
-    <script>
-        // Function to resize the image map based on the image's actual dimensions
-        function resizeImageMap() {
-            const image = document.getElementById('responsive-image');
-            const map = document.querySelector('map[name="image-map"]');
-            const areas = map.getElementsByTagName('area');
-
-            // Get the actual dimensions of the image
-            const width = image.naturalWidth;
-            const height = image.naturalHeight;
-            const displayedWidth = image.offsetWidth;
-            const scale = displayedWidth / width;
-
-            // Scale the coordinates for each <area>
-            for (const area of areas) {
-                const originalCoords = area.getAttribute('data-original-coords').split(',').map(Number);
-                const scaledCoords = originalCoords.map(coord => Math.round(coord * scale));
-                area.setAttribute('coords', scaledCoords.join(','));
-            }
-        }
-
-        // Set up the image map's original coordinates and resize on load and window resize
-        document.addEventListener('DOMContentLoaded', () => {
-            const areas = document.querySelectorAll('map[name="image-map"] area');
-            areas.forEach(area => {
-                if (!area.hasAttribute('data-original-coords')) {
-                    area.setAttribute('data-original-coords', area.getAttribute('coords'));
-                }
-            });
-
-            resizeImageMap();
-            window.addEventListener('resize', resizeImageMap);
-        });
-    </script>
+        <!-- Invisible clickable links -->
+        <a href="https://bw11111.github.io/tsa2025/menu.html" class="hotspot" title="menu" style="top: 10px; left: 187px; width: 36px; height: 16px;"></a>
+        <a href="https://bw11111.github.io/tsa2025/about_us.html" class="hotspot" title="about us" style="top: 10px; left: 243px; width: 48px; height: 11px;"></a>
+    </div>
 
 </body>
 </html>
